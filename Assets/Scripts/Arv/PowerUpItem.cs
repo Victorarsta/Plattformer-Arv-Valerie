@@ -4,22 +4,39 @@ using UnityEngine;
 
 public abstract class PowerUpItem : Item//Another abstract class like Item.
 {
+    [SerializeField] public string itemType;
+    private bool hasGivenDuration = false;
+
     [SerializeField]
-    float duration = 5;
+    float duration;
 
     bool countdown = false;
     
     protected GameObject player; //A references to the player that is public to classes that inherit from PowerUpItem.
 
     // Update is called once per frame
+
     public virtual void Update()
     {
         if (countdown)
         {
+            if (!hasGivenDuration)
+            {
+                if (itemType == "Fire")
+                {
+                    duration = 10.0f;
+                }
+                if (itemType == "Dash")
+                {
+                    duration = 15.0f;
+                }
+                hasGivenDuration = true;
+            }
             duration -= Time.deltaTime;
             if (duration > 0)
             {
                 PowerUp();
+                DashBoost();
             }
             else
             {
@@ -41,6 +58,10 @@ public abstract class PowerUpItem : Item//Another abstract class like Item.
 
     }
 
+    public virtual void DashBoost()
+    {
+
+    }
     public virtual void StopPower()
     {
         Destroy(gameObject);

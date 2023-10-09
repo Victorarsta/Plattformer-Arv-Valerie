@@ -14,6 +14,7 @@ public class FireFlower : PowerUpItem
         if (playerRB == null)
         {
             playerRB = player.GetComponent<Rigidbody>();
+            itemType = "Fire";
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
