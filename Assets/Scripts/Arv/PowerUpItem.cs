@@ -8,7 +8,7 @@ public abstract class PowerUpItem : Item//Another abstract class like Item.
     private bool hasGivenDuration = false;
 
     [SerializeField]
-    float duration;
+    protected float duration;
 
     bool countdown = false;
     
@@ -36,7 +36,7 @@ public abstract class PowerUpItem : Item//Another abstract class like Item.
             if (duration > 0)
             {
                 PowerUp();
-                DashBoost();
+                
             }
             else
             {
@@ -58,10 +58,7 @@ public abstract class PowerUpItem : Item//Another abstract class like Item.
 
     }
 
-    public virtual void DashBoost()
-    {
-
-    }
+    
     public virtual void StopPower()
     {
         Destroy(gameObject);

@@ -10,12 +10,13 @@ public class DashPower : PowerUpItem
     {
     }
 
-    public override void DashBoost()
+    public override void PowerUp()
     {
         if (rb == null)
         {
             rb = player.GetComponent<Rigidbody>();
             itemType = "Dash";
+            duration = 15.0f;
         }
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
